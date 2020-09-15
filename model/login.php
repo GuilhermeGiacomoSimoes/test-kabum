@@ -1,9 +1,9 @@
 <?php 
 session_start();
-include('connection.php');
+include('../model/connection.php');
 
 if (empty($_POST['user']) || empty($_POST['pass'])){
-	header('Location: index.php');
+	header('Location: /index.php');
 	exit();
 }
 
@@ -18,11 +18,11 @@ $row = mysqli_num_rows($result);
 
 if ($row == 1){
 	$_SESSION['user'] = $user;
-	header('Location: painel.php');
+	header('Location: /view/painel.php');
 	exit();
 }
 else {
 	$_SESSION['not_authenticated'] = true;
-	header('Location: login.php');
+	header('Location: /model/login.php');
 	exit();
 }
