@@ -1,7 +1,8 @@
 <?php
+include('connection.php');
 
 $getClients = new GetClients();
-$getClients->setData();
+//$getClients->setData();
 
 switch($_SERVER["REQUEST_METHOD"]){
 	case'GET':
@@ -23,31 +24,17 @@ class GetClients {
 
 	public function GET() {
 
-		$query = "select *from client";
+		$query = "select *from client;";
 
 		if (isset($data['client_id'])){
 			$query += " where client_id = " + $data['client_id'];
 		}
 
 		$result = mysqli_query($connection, $query);
-		$row 	= mysqli_num_rows($result);
-		$array 	= array();
-	
-		$result->bind_result($client_id, $client_name, $client_date_of_birth, $client_cpf, $client_rg, $client_phone, $client_address);
-
-		if ($row > 0) {
-			while($result->fetch()) {
-				$array[] = [
-					'client_id' 			=> $client_id,
-					'client_name' 			=> $client_name, 
-					'client_date_of_birth' 	=> $client_date_of_birth, 
-					'client_cpf' 			=> $client_cpf, 
-					'client_rg' 			=> $client_rg, 
-					'client_phone' 			=> $client_phone, 
-					'client_address' 		=> $client_address
-				];
-			}
-		}
+		$array  = array();
+		if(mysqli_num_rows($result) > o){
+			$array = mysqli_fetch_array($result, MYSQLI_NUM);
+		}	
 
 		echo $array;
 		return;

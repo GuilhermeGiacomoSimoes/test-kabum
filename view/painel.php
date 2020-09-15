@@ -49,7 +49,7 @@ include('verify_login.php');
 						<span style="margin-left: 20%"> ${client['client_cpf']} </span>
 						<hr style="margin-left: 10%; margin-right: 10% ">`;
 
-			document.getElementById('container_clients').innerHTML = html;
+			document.getElementById('container_clients').innerHTML += html;
 		}
 	}
 
