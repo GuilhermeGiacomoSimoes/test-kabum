@@ -7,7 +7,6 @@ include('verify_login.php');
 	<link rel="stylesheet" href="css/bulma.min.css" />
 	<h2> Olá, <?php echo $_SESSION['user']; ?> </h2>
 	<h2> <a href="logout.php">sair</a></h2>
-	<h2> <a href="new_user.php">cadastrar novo usuário</a></h2>
 
 	<br/>
 
@@ -15,7 +14,7 @@ include('verify_login.php');
 		<span class="title has-text-grey" style="margin-left: 10%; font-size: 30px">nome</span>
 		<span class="title has-text-grey" style="margin-left: 20%; font-size: 30px">telefone</span>
 		<span class="title has-text-grey" style="margin-left: 20%; font-size: 30px">cpf</span>
-
+		<button class="positive" style="margin-left: 12%" href="">Novo</button>
 		<br/>
 
 		<hr style="margin-left: 10%; margin-right: 10% ">
@@ -48,11 +47,15 @@ include('verify_login.php');
 			const html = `<span style="margin-left: 10%"> ${client['client_name']}</span>
 						<span style="margin-left: 20%"> ${client['client_phone']} </span>
 						<span style="margin-left: 20%"> ${client['client_cpf']} </span>
-						<button class="danger">Excluir</button>
-						<hr style="margin-left: 10%; margin-right: 10% ">`;
+						<button class="danger" style="margin-left: 8%" onclick="deleteClient(${client['client_id']})">Excluir</button>
+						<hr style="margin-left: 10%; margin-right: 10%">`;
 
 			document.getElementById('container_clients').innerHTML += html;
 		}
+	}
+
+	function deleteClient(client_id) {
+		
 	}
 
 </script>
@@ -67,10 +70,23 @@ include('verify_login.php');
 	}
 
 	.danger {
-		background-color: red; 
+		background-image: linear-gradient(to top, #FF0000, #FF6347 ) ; 
 		color: white; 
-		margin-left: 10%;
-		
+		padding: 1%;
+		font-size: 15px;
+		-moz-border-radius:7px;
+		-webkit-border-radius:7px;
+		 border-radius:7px	
+	}
+
+	.positive {
+		background-image: linear-gradient(to top, #4169E1, #6495ED) ; 
+		color: white; 
+		padding: 1%;
+		font-size: 15px;
+		-moz-border-radius:7px;
+		-webkit-border-radius:7px;
+		 border-radius:7px	
 	}
 </style>
 
