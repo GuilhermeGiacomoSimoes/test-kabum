@@ -1,15 +1,6 @@
 <?php
 include('connection.php');
 
-$getClients = new GetClients();
-//$getClients->setData();
-
-switch($_SERVER["REQUEST_METHOD"]){
-	case'GET':
-		$getClients->GET();
-		break;
-}
-
 class GetClients {
 
 	private $data;
@@ -24,19 +15,57 @@ class GetClients {
 
 	public function GET() {
 
+		$connection = new Connection();
+		list($stmt, $conn) = $connection->access();
+		$data = $this->getData();
+
+		$query = $this->getQuery($data['client_id']);	
+		$response = array();
+
+		if($stmt->prepare($query)) {
+			if (isset($data['client_id'])) {
+				$stmt->bind_param("i", $data['client_id']);
+			}	
+
+			$stmt->execute();
+			$stmt->store_result();
+			$nresults = $stmt->num_rows();
+
+			if ($nresults > 0) {
+				$stmt->bind_result($client_id, $client_name, $client_date_of_birth, $client_cpf, $client_rg, $client_phone, $lient_address );
+				while($stmt->fetch()){
+					$response[] = [
+						'client_id' => $client_id, 
+						'client_name' => $client_name, 
+						'client_date_of_birth' => $client_date_of_birth, 
+						'client_cpf' => $client_cpf, 
+						'client_rg' => $client_rg, 
+						'client_phone' => $client_phone, 
+						'lient_address' => $lient_address
+					];
+				}
+			}
+		}
+
+		echo json_encode($response);
+		return;
+	}
+
+	private function getQuery($clientId) {
 		$query = "select *from client;";
 
-		if (isset($data['client_id'])){
+		if (isset($clientId)){
 			$query += " where client_id = " + $data['client_id'];
 		}
 
-		$result = mysqli_query($connection, $query);
-		$array  = array();
-		if(mysqli_num_rows($result) > o){
-			$array = mysqli_fetch_array($result, MYSQLI_NUM);
-		}	
-
-		echo $array;
-		return;
+		return $query;
 	}
 }
+
+$getClients = new GetClients();
+
+if($_SERVER['REQUEST_METHOD'] === 'GET'){
+	$getClients->setData($_GET);	
+	$getClients->GET();
+}
+

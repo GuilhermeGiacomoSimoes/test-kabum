@@ -33,7 +33,7 @@ include('verify_login.php');
 		xhttp.open('GET', url, false);
 		xhttp.onreadystatechange = function() {
 			if (xhttp.status == 200) {
-				document.addEventListener( 'DOMContentLoaded', buildTable( xhttp.responseText ) );
+				document.addEventListener( 'DOMContentLoaded', buildTable( JSON.parse(xhttp.responseText) ) );
 			}
 			else {
 				alert('error');
@@ -43,10 +43,12 @@ include('verify_login.php');
 	}
 
 	function buildTable( clients ){
+		console.log(clients);
 		for (let client of clients){
-			const html = `<span style="margin-left: 10%"> ${client['client_id']}</span>
+			const html = `<span style="margin-left: 10%"> ${client['client_name']}</span>
 						<span style="margin-left: 20%"> ${client['client_phone']} </span>
 						<span style="margin-left: 20%"> ${client['client_cpf']} </span>
+						<button class="danger">Excluir</button>
 						<hr style="margin-left: 10%; margin-right: 10% ">`;
 
 			document.getElementById('container_clients').innerHTML += html;
@@ -62,6 +64,13 @@ include('verify_login.php');
 		-moz-border-radius:7px;
 		-webkit-border-radius:7px;
 		 border-radius:7px
+	}
+
+	.danger {
+		background-color: red; 
+		color: white; 
+		margin-left: 10%;
+		
 	}
 </style>
 

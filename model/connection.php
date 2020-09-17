@@ -4,4 +4,13 @@ define('USER', 'root');
 define('PASS', 'root');
 define('DB', 'administrative_area');
 
-$connection = mysqli_connect(HOST, USER, PASS, DB)  or die ('Não foi possível conectar');
+class Connection {
+	function access() {
+		$conn = new mysqli(HOST, USER, PASS, DB)  or die ('Não foi possível conectar');
+
+		mysqli_set_charset($connection,"utf8");
+
+		$stmt = $conn->stmt_init();
+		return array($stmt, $conn);
+	}
+}

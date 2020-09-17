@@ -7,22 +7,68 @@ if (empty($_POST['user']) || empty($_POST['pass'])){
 	exit();
 }
 
-$user = mysqli_real_escape_string($connection, $_POST['user']);
-$pass = mysqli_real_escape_string($connection, $_POST['pass']);
+class Login {
 
-$query = "select user_name from user where user_name='{$user}' and password=md5('{$pass}')";
+	private $data;
 
-$result = mysqli_query($connection, $query);
+	public function setData($data){
+		$this->$data = $data;
+	}
 
-$row = mysqli_num_rows($result);
+	private function getData(){
+		return $this->$data;
+	}
 
-if ($row == 1){
-	$_SESSION['user'] = $user;
-	header('Location: /view/painel.php');
-	exit();
+	public function POST() {
+
+		$data = $this->getData();
+
+		$connection = new Connection();
+
+		list($stmt, $conn) = $connection->access();
+		$data = $this->getData();
+
+		string $query = $this->getQuery();	
+		$response = array();
+
+		$user = $data['user'];
+		$pass = $data['pass'];
+
+		if (isset($user) && isset($pass)) {
+			if($stmt->prepare($query)) {
+				$stmt->bind_param("ss", );
+				$stmt->execute();
+				$stmt->store_result();
+				$nresults = $stmt->num_rows();
+
+				
+				if ($nresults >= 1){
+					$_SESSION['user'] = $user;
+					header('Location: /view/painel.php');
+					exit();
+				}
+				else {
+					$_SESSION['not_authenticated'] = true;
+					header('Location: /model/login.php');
+					exit();
+				}
+			}
+		}
+		else {
+			$_SESSION['not_authenticated'] = true;
+			header('Location: /model/login.php');
+			exit();
+		}
+	}
+
+	private function getQuery() : string {
+		return "select *from user where user_name = ? and password = md5(?)"
+	}
 }
-else {
-	$_SESSION['not_authenticated'] = true;
-	header('Location: /model/login.php');
-	exit();
+
+$login = new Login();
+
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+	$login->setData($_POST);	
+	$login->POST();
 }
