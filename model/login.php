@@ -2,10 +2,10 @@
 session_start();
 include('../model/connection.php');
 
-if (empty($_POST['user']) || empty($_POST['pass'])){
-	header('Location: /index.php');
-	exit();
-}
+//if (empty($_POST['user']) || empty($_POST['pass'])){
+//	header('Location: /index.php');
+//	exit();
+//}
 
 class Login {
 
@@ -20,21 +20,15 @@ class Login {
 	}
 
 	public function POST() {
-
-		$data = $this->getData();
-
 		$connection = new Connection();
-
 		list($stmt, $conn) = $connection->access();
-		$data = $_POST; 
+		$data = $_POST;
 
 		$query = $this->getQuery();	
 		$response = array();
 
 		$user = $data['user'];
 		$pass = $data['pass'];
-
-		var_dump($data);
 
 		if (isset($user) && isset($pass)) {
 			if($stmt->prepare($query)) {
@@ -51,9 +45,41 @@ class Login {
 				}
 				else {
 					$_SESSION['not_authenticated'] = true;
-					header('Location: /model/login.php');
+					header('Location: /index.php');
 					exit();
 				}
+			}
+		}
+		else {
+			$_SESSION['not_authenticated'] = true;
+			header('Location: /index.php');
+			exit();
+		}
+	}
+
+	public function PUT() {
+		$url_components = parse_url($_SERVER['REQUEST_URI']);
+		parse_str($url_components['query'], $data);
+
+		$connection = new Connection();
+
+		list($stmt, $conn) = $connection->access();
+
+		$query = $this->getQueryCAD();	
+
+		var_dump($data);
+
+		$user = $data['user'];
+		$pass = $data['pass'];
+
+		if (isset($user) && isset($pass)) {
+			if($stmt->prepare($query)) {
+				$stmt->bind_param("ss", $user, $pass);
+				$stmt->execute();
+				
+				$_SESSION['user'] = $user;
+				header('Location: /view/painel.php');
+				exit();
 			}
 		}
 		else {
@@ -66,6 +92,10 @@ class Login {
 	private function getQuery() : string {
 		return "select *from user where user_name = ? and password = md5(?)";
 	}
+	
+	private function getQueryCAD() : string {
+		return "insert into user (user_name, password) values (?, md5(?))";
+	}
 }
 
 $login = new Login();
@@ -73,4 +103,11 @@ $login = new Login();
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 	$login->setData($_POST);	
 	$login->POST();
+}
+
+if($_SERVER['REQUEST_METHOD'] === 'PUT'){
+	$url_components = parse_url($_SERVER['REQUEST_URI']);
+	parse_str($url_components['query'], $data);
+	var_dump($data);
+	$login->PUT();
 }

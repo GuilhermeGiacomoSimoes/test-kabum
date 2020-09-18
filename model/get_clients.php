@@ -90,8 +90,6 @@ class Clients {
 		$url_components = parse_url($_SERVER['REQUEST_URI']);
 		parse_str($url_components['query'], $data);
 
-		var_dump($data);
-
 		if (isset($data['client_id'])) {
 			var_dump("ta aqui");
 			$query = $this->getQueryDELETE();	
@@ -121,7 +119,7 @@ class Clients {
 		else {
 			$response = array();
 			$response['error'] = 1;
-			$response['message'] = $e->getMessage();
+			$response['message'] = 'sem id';
 
 			echo json_encode($response);
 			return;	

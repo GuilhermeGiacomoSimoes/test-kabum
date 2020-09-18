@@ -9,47 +9,92 @@ session_start();
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Sistema de Login</title>
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-		<link rel="stylesheet" href="view/css/bulma.min.css" />
-		<link rel="stylesheet" type="text/css" href="view/css/login.css">
 	</head>
 
-	<body>
-		<section class="hero is-success is-fullheight">
-			<div class="hero-body">
-				<div class="container has-text-centered">
-					<div class="column is-4 is-offset-4">
-						<h3 class="title has-text-grey">Login</h3>
-						<?php
-							if (isset($_SESSION['not_authenticated'])):
-						?>
-						<div class="notification is-danger">
-						  <p>ERRO: Usuário ou senha inválidos.</p>
-						</div>
-						<?php
-							endif;
-							unset($_SESSION['not_authenticated']);
-						?>
-						<div class="box">
+	<span> Área administrativa </span>
+	<body style="background-color: #dcdcdc; height: 100%; width: 100%">
+		<section>
+			<center>
+				<div class="hero-body">
+					<div class="container">
+						<div class="column is-4 is-offset-4">
+							<h3 class="title has-text-grey">Login</h3>
+							<?php
+								if (isset($_SESSION['not_authenticated'])):
+							?>
+							<div class="danger">
+							  <p>Usuário ou senha inválidos.</p>
+							</div>
+							<?php
+								endif;
+								unset($_SESSION['not_authenticated']);
+							?>
 							<form action="/model/login.php" method="POST">
-								<div class="field">
-									<div class="control">
-										<input name="user" name="text" class="input is-large" placeholder="Seu usuário" autofocus="">
-									</div>
-								</div>
-
-								<div class="field">
-									<div class="control">
-										<input name="pass" class="input is-large" type="password" placeholder="Sua senha">
-									</div>
-								</div>
-								<button type="submit" class="button is-block is-link is-large is-fullwidth">Entrar</button>
+								<input class="input" name="user" placeholder="Seu usuário" autofocus="" style="margin-bottom: 1%">
+								<br>
+								<input class="input" name="pass" type="password" placeholder="Sua senha"style="margin-bottom: 1%">
+								<br>
+								<button type="submit" class="positive">Entrar</button>
 							</form>
+							<a href="./view/new_cad.php">Cadastrar</a>
 						</div>
 					</div>
 				</div>
-			</div>
+			<center>	
 		</section>
 	</body>
 
 </html>
+
+<style>
+	.input {
+		width: 40%;	
+	}
+
+	.container {
+		padding: 5%;
+		background-color: #fff;
+		-moz-border-radius:7px;
+		-webkit-border-radius:7px;
+		 border-radius:7px;
+		width: 30%;	
+		height: 30%;	
+	}
+
+	.danger {
+		background-image: linear-gradient(to top, #FF0000, #FF6347 ) ; 
+		color: white; 
+		padding: 3%;
+		font-size: 15px;
+		-moz-border-radius:7px;
+		-webkit-border-radius:7px;
+		 border-radius:7px;
+		 width: 38%;
+		 margin-bottom: 1% 
+	}
+
+	.positive {
+		background-image: linear-gradient(to top, #4169E1, #6495ED) ; 
+		color: white; 
+		padding: 1%;
+		font-size: 15px;
+		-moz-border-radius:7px;
+		-webkit-border-radius:7px;
+		 border-radius:7px;	
+		 cursor: pointer;	
+		 width: 43%;
+		 padding: 3%
+	}
+
+	.new {
+		background-image: linear-gradient(to top, #2E8B57, #3CB371) ; 
+		color: white; 
+		padding: 1%;
+		font-size: 15px;
+		-moz-border-radius:7px;
+		-webkit-border-radius:7px;
+		 border-radius:7px;	
+		 cursor: pointer;	
+	}
+
+</style>

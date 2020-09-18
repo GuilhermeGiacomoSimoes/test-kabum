@@ -4,24 +4,24 @@ include('verify_login.php');
 ?>
 
 <div style="background-color: #dcdcdc; height: 100%; width: 100%">
-	<link rel="stylesheet" href="css/bulma.min.css" />
-	<h2> Olá, <?php echo $_SESSION['user']; ?> </h2>
-	<h2> <a href="logout.php">sair</a></h2>
-
-	<br/>
+	<div style="padding: 1%">
+		 Olá, <?php echo $_SESSION['user']; ?> 
+		<br>
+		<a href="logout.php">sair</a>
+	</div>
 
 	<div class="container" id="container_clients">
-		<span class="title has-text-grey" style="margin-left: 8%; font-size: 18px">Nome</span>
-		<span class="title has-text-grey" style="margin-left: 8%; font-size: 18px">Telefone</span>
-		<span class="title has-text-grey" style="margin-left: 8%; font-size: 18px">Nascimento</span>
-		<span class="title has-text-grey" style="margin-left: 8%; font-size: 18px">CPF</span>
-		<span class="title has-text-grey" style="margin-left: 8%; font-size: 18px">RG</span>
+		<span class="title" style="margin-left: 10%; font-size: 18px">Nome</span>
+		<span class="title" style="margin-left: 11%; font-size: 18px">Telefone</span>
+		<span class="title" style="margin-left: 7%; font-size: 18px">Nascimento</span>
+		<span class="title" style="margin-left: 8%; font-size: 18px">CPF</span>
+		<span class="title" style="margin-left: 8%; font-size: 18px">RG</span>
 		<a href="new_user.php" style="margin-left: 10%">
 			<button class="new" >Novo</button>
 		</a>
 		<br/>
 
-		<hr style="margin-left: 10%; margin-right: 10% ">
+		<hr style="margin-left: 10%; margin-right: 10%;  opacity: 0.5">
 		
 	</div>
 </div>
@@ -47,14 +47,14 @@ include('verify_login.php');
 
 	function buildTable( clients ){
 		for (let client of clients){
-			const html = `<span style="margin-left: 8%; max-width: 10%"> ${client['client_name']}</span>
-						<span style="margin-left: 4%; max-width: 10%"> ${client['client_phone']} </span>
-						<span style="margin-left: 8%; max-width: 10%"> ${client['client_date_of_birth']} </span>
-						<span style="margin-left: 8%; max-width: 10%"> ${client['client_cpf']} </span>
-						<span style="margin-left: 6%; max-width: 10%"> ${client['client_rg']} </span>
+			const html = `<span class="description"style="margin-left: 10%; width: 10%"> ${client['client_name']}</span>
+						<span class="description" style="margin-left: 4%; width: 10%"> ${client['client_phone']} </span>
+						<span class="description"style="margin-left: 8%; width: 10%"> ${client['client_date_of_birth']} </span>
+						<span class="description"style="margin-left: 8%; width: 10%"> ${client['client_cpf']} </span>
+						<span class="description"style="margin-left: 6%; width: 10%"> ${client['client_rg']} </span>
 						<button class="danger" style="margin-left: 8%" onclick="deleteClient(${client['client_id']})">Excluir</button>
 						<button class="positive" style="margin-left: 1%" onclick="editClient(${client['client_id']})">Editar</button>
-						<hr style="margin-left: 10%; margin-right: 10%">`;
+						<hr style="margin-left: 10%; margin-right: 10%; opacity: 0.5">`;
 
 			document.getElementById('container_clients').innerHTML += html;
 		}
@@ -93,7 +93,8 @@ include('verify_login.php');
 		background-color: #fff;
 		-moz-border-radius:7px;
 		-webkit-border-radius:7px;
-		 border-radius:7px
+		 border-radius:7px;
+		margin: 5%
 	}
 
 	.danger {
@@ -129,5 +130,13 @@ include('verify_login.php');
 		 cursor: pointer;	
 	}
 
+	.title {
+		color: #808080;
+		font-weight: bold;
+	}
+
+	.description {
+		color: #808080;
+	}
 </style>
 
