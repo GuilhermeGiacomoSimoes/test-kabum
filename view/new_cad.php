@@ -6,8 +6,8 @@ session_start();
 	<span> Olá, <?php echo $_SESSION['user']; ?> </span>
 
 	<div class="container" style="margin: 10%">
-		Nome de usuário: <input id="user" placeholder="mario.png" style="margin-bottom: 1%; margin-left: 3%"></input> <br/>
-		Senha: <input id="pass" type="password" placeholder="sua senha" style="margin-bottom: 1%; margin-left: 9%"></input> <br/>
+		Nome de usuário: <input id="user" placeholder="mario.png" style="margin-bottom: 1%;"></input> <br/>
+		Senha: <input id="pass" type="password" placeholder="sua senha" style="margin-bottom: 1%;"></input> <br/>
 		<button onclick="cadUser()" class="new"> Cadastrar </button>
 	</div>
 </div>

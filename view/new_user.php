@@ -7,12 +7,12 @@ include('verify_login.php');
 	<span> Olá, <?php echo $_SESSION['user']; ?> </span>
 
 	<div class="container" style="margin: 10%">
-			Nome: <input id="name" placeholder="João batista" style="margin-bottom: 1%; margin-left: 6%"></input> <br/>
-			Nascimento: <input class="inputDate" id="date_of_birth" type="date" placeholder="15/06/1974" style="margin-bottom: 1%; margin-left: 2%"></input> <br/>
-			CPF: <input id="cpf" placeholder="396.987.958-89" style="margin-bottom: 1%; margin-left: 7%"></input> <br/>
-			RG: <input id="rg" placeholder="46.563.631-7" style="margin-bottom: 1%; margin-left: 8%"></input> <br/>
-			Telefone: <input id="telephone" type="tel" placeholder="(11)96625544" style="margin-bottom: 1%; margin-left: 5%"></input> <br/>
-			Endereço: <input id="address" placeholder="R. Palestra Itália, 1920" style="margin-bottom: 1%; margin-left: 4%"></input> <br/>
+			Nome: <input id="name" placeholder="João batista" style="margin-bottom: 1%;"></input> <br/>
+			Nascimento: <input class="inputDate" id="date_of_birth" type="date" placeholder="15/06/1974" style="margin-bottom: 1%;"></input> <br/>
+			CPF: <input id="cpf" placeholder="396.987.958-89" style="margin-bottom: 1%;"></input> <br/>
+			RG: <input id="rg" placeholder="46.563.631-7" style="margin-bottom: 1%;"></input> <br/>
+			Telefone: <input id="telephone" type="tel" placeholder="(11)96625544" style="margin-bottom: 1%;"></input> <br/>
+			Endereço: <input id="address" placeholder="R. Palestra Itália, 1920" style="margin-bottom: 1%;"></input> <br/>
 
 			<button id="add" onclick="addNewClient()" class="new"> Adicionar </button>
 	</div>
