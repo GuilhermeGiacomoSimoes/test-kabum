@@ -2,11 +2,6 @@
 session_start();
 include('../model/connection.php');
 
-//if (empty($_POST['user']) || empty($_POST['pass'])){
-//	header('Location: /index.php');
-//	exit();
-//}
-
 class Login {
 
 	private $data;

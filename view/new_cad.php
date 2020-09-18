@@ -24,7 +24,7 @@ session_start();
 		xhttp.open('PUT', url, false);
 		xhttp.onreadystatechange = function() {
 			if (xhttp.status == 200) {
-				document.addEventListener( 'DOMContentLoaded', showMessage('Cadastrado com sucesso'));
+				document.addEventListener( 'DOMContentLoaded', showMessage('Cadastrado com sucesso', true));
 			}
 			else {
 				showMessage('Erro ao cadastrar');	
@@ -33,8 +33,11 @@ session_start();
 		xhttp.send();
 	}
 
-	function showMessage(message) {
+	function showMessage(message, change) {
 		alert(message);
+		if (change) {
+			window.location.href = "./painel.php";
+		}
 	}
 
 </script>
