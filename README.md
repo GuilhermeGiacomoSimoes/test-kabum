@@ -6,3 +6,8 @@
 
 		2.1 - O cadastro do Cliente deve conter: Nome; Data Nascimento;CPF; RG; Telefone.
 		2.2 - O Cliente pode ter 1 ou N endereços.
+
+
+
+## para executar
+	php -S localhost:8080
