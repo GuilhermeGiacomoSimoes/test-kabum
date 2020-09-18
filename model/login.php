@@ -26,17 +26,19 @@ class Login {
 		$connection = new Connection();
 
 		list($stmt, $conn) = $connection->access();
-		$data = $this->getData();
+		$data = $_POST; 
 
-		string $query = $this->getQuery();	
+		$query = $this->getQuery();	
 		$response = array();
 
 		$user = $data['user'];
 		$pass = $data['pass'];
 
+		var_dump($data);
+
 		if (isset($user) && isset($pass)) {
 			if($stmt->prepare($query)) {
-				$stmt->bind_param("ss", );
+				$stmt->bind_param("ss", $user, $pass);
 				$stmt->execute();
 				$stmt->store_result();
 				$nresults = $stmt->num_rows();
@@ -62,7 +64,7 @@ class Login {
 	}
 
 	private function getQuery() : string {
-		return "select *from user where user_name = ? and password = md5(?)"
+		return "select *from user where user_name = ? and password = md5(?)";
 	}
 }
 
