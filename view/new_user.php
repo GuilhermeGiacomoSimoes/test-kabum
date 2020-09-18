@@ -19,6 +19,20 @@ include('verify_login.php');
 </div>
 
 <script>
+
+		verifyEdit();
+		function verifyEdit() {
+			const url = window.location.href;
+			if (url.indexOf('?') != -1){
+				const parameters = url.split('?')[1];
+
+				const arrayParameters = parameters.split('=');
+
+				console.log(arrayParameters);
+			}
+		}
+
+
 		function addNewClient()  {
 			const name = document.getElementById('name').value;	
 			const date_of_birth = document.getElementById('date_of_birth').value;	
@@ -50,7 +64,7 @@ include('verify_login.php');
 			alert(message);
 
 			if (back) {
-				window.location.href = "../view/painel.php"
+				window.location.href = "../view/painel.php";
 			}
 		}
 

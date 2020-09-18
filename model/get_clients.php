@@ -41,7 +41,7 @@ class Clients {
 						'client_cpf' => $client_cpf, 
 						'client_rg' => $client_rg, 
 						'client_phone' => $client_phone, 
-						'lient_address' => $lient_address
+						'client_address' => $lient_address
 					];
 				}
 			}

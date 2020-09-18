@@ -11,10 +11,13 @@ include('verify_login.php');
 	<br/>
 
 	<div class="container" id="container_clients">
-		<span class="title has-text-grey" style="margin-left: 10%; font-size: 30px">nome</span>
-		<span class="title has-text-grey" style="margin-left: 20%; font-size: 30px">telefone</span>
-		<span class="title has-text-grey" style="margin-left: 20%; font-size: 30px">cpf</span>
-		<a href="new_user.php" style="margin-left: 12%">
+		<span class="title has-text-grey" style="margin-left: 8%; font-size: 18px">Nome</span>
+		<span class="title has-text-grey" style="margin-left: 8%; font-size: 18px">Telefone</span>
+		<span class="title has-text-grey" style="margin-left: 8%; font-size: 18px">Nascimento</span>
+		<span class="title has-text-grey" style="margin-left: 8%; font-size: 18px">CPF</span>
+		<span class="title has-text-grey" style="margin-left: 8%; font-size: 18px">RG</span>
+		<span class="title has-text-grey" style="margin-left: 8%; font-size: 18px">Endereço</span>
+		<a href="new_user.php" style="margin-left: 10%">
 			<button class="new" >Novo</button>
 		</a>
 		<br/>
@@ -45,11 +48,13 @@ include('verify_login.php');
 
 	function buildTable( clients ){
 		for (let client of clients){
-			const html = `<span style="margin-left: 10%"> ${client['client_name']}</span>
-						<span style="margin-left: 20%"> ${client['client_phone']} </span>
-						<span style="margin-left: 20%"> ${client['client_cpf']} </span>
+			const html = `<span style="margin-left: 8%; max-width: 10%"> ${client['client_name']}</span>
+						<span style="margin-left: 4%; max-width: 10%"> ${client['client_phone']} </span>
+						<span style="margin-left: 8%; max-width: 10%"> ${client['client_date_of_birth']} </span>
+						<span style="margin-left: 8%; max-width: 10%"> ${client['client_cpf']} </span>
+						<span style="margin-left: 6%; max-width: 10%"> ${client['client_rg']} </span>
+						<span style="margin-left: 8%; max-width: 10%"> ${client['client_address']} </span>
 						<button class="danger" style="margin-left: 8%" onclick="deleteClient(${client['client_id']})">Excluir</button>
-						<button class="positive"  onclick="openDetail(${client['client_id']})">Detalhes</button>
 						<hr style="margin-left: 10%; margin-right: 10%">`;
 
 			document.getElementById('container_clients').innerHTML += html;
@@ -76,10 +81,6 @@ include('verify_login.php');
 	function showMessage(message) {
 		alert(message);
 	} 
-
-	function openDetail(client_id) {
-
-	}
 
 </script>
 
