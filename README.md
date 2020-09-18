@@ -12,18 +12,18 @@
 	- rode o arquivo db.sql que está na raiz do projeto no seu sgdb preferido
  
 	- caso queira rodar pelo shell... é o seguinte
-	------------------------------------------------------------------ - x 
-	|	$ mysql -u root -p												 |
-	|																	 |
-	|	- digite sua senha do mysql										 |
-	|																	 |
-	|	$ create database administrative_area;						     |
-	|	$ exit															 |
-	|																	 |
-	|	$ mysql -u root -p administrative_area < caminho/do/bd.sql		 |
-	|																	 |
-	|	FEITO :)														 |
-	|---------------------------------------------------------------------
+	----------------------------------------------------------------- - x 
+	|	$ mysql -u root -p												|
+	|																	|
+	|	- digite sua senha do mysql										|
+	|																	|
+	|	$ create database administrative_area;						    |
+	|	$ exit															|
+	|																	|
+	|	$ mysql -u root -p administrative_area < caminho/do/bd.sql		|
+	|																	|
+	|	FEITO :)														|
+	|--------------------------------------------------------------------
 
 
 ## execute na porta 8080
