@@ -13,16 +13,16 @@
  
 	- caso queira rodar pelo shell... é o seguinte
 	----------------------------------------------------------------- - x 
-	|	$ mysql -u root -p												|
-	|																	|
-	|	- digite sua senha do mysql										|
-	|																	|
-	|	$ create database administrative_area;						    |
-	|	$ exit															|
-	|																	|
-	|	$ mysql -u root -p administrative_area < caminho/do/bd.sql		|
-	|																	|
-	|	FEITO :)														|
+	|	$ mysql -u root -p					    |
+	|								    |
+	|	- digite sua senha do mysql			            |
+	|								    |
+	|	$ create database administrative_area;			    |
+	|	$ exit							    |
+	|								    |
+	|	$ mysql -u root -p administrative_area < caminho/do/bd.sql  |
+	|								    |
+	|	FEITO :)						    |
 	|--------------------------------------------------------------------
 
 
