@@ -8,6 +8,23 @@
 		2.2 - O Cliente pode ter 1 ou N endereços.
 
 
+## crie o bd e as tabelas
+	- rode o arquivo db.sql que está na raiz do projeto no seu sgdb preferido
+ 
+	- caso queira rodar pelo shell... é o seguinte
+	------------------------------------------------------------------ - x 
+	|	$ mysql -u root -p												 |
+	|																	 |
+	|	- digite sua senha do mysql										 |
+	|																	 |
+	|	$ create database administrative_area;						     |
+	|	$ exit															 |
+	|																	 |
+	|	$ mysql -u root -p administrative_area < caminho/do/bd.sql		 |
+	|																	 |
+	|	FEITO :)														 |
+	|---------------------------------------------------------------------
 
-## para executar
+
+## execute na porta 8080
 	php -S localhost:8080

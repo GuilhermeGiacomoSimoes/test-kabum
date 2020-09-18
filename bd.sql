@@ -1,4 +1,4 @@
-CREATE DATABASE  `administrative_area`;
+create database if not exists `administrative_area`;
 
 USE `administrative_area`;
 
