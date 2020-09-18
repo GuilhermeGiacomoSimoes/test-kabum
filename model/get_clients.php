@@ -60,7 +60,7 @@ class Clients {
 
 		$query = $this->getQueryPUT($data['client_id']);	
 		$response = array();
-
+		
 		try {
 			if($stmt->prepare($query)) {
 				$stmt->bind_param("issssssissssss", $data['client_id'], $data['client_name'], $data['client_date_of_birth'], $data['client_cpf'], $data['client_rg'], $data['client_phone'], $data['client_address'], $data['client_id'], $data['client_name'], $data['client_date_of_birth'], $data['client_cpf'], $data['client_rg'], $data['client_phone'], $data['client_address']);

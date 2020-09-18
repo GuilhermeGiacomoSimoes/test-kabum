@@ -16,7 +16,6 @@ include('verify_login.php');
 		<span class="title has-text-grey" style="margin-left: 8%; font-size: 18px">Nascimento</span>
 		<span class="title has-text-grey" style="margin-left: 8%; font-size: 18px">CPF</span>
 		<span class="title has-text-grey" style="margin-left: 8%; font-size: 18px">RG</span>
-		<span class="title has-text-grey" style="margin-left: 8%; font-size: 18px">Endereço</span>
 		<a href="new_user.php" style="margin-left: 10%">
 			<button class="new" >Novo</button>
 		</a>
@@ -53,8 +52,8 @@ include('verify_login.php');
 						<span style="margin-left: 8%; max-width: 10%"> ${client['client_date_of_birth']} </span>
 						<span style="margin-left: 8%; max-width: 10%"> ${client['client_cpf']} </span>
 						<span style="margin-left: 6%; max-width: 10%"> ${client['client_rg']} </span>
-						<span style="margin-left: 8%; max-width: 10%"> ${client['client_address']} </span>
 						<button class="danger" style="margin-left: 8%" onclick="deleteClient(${client['client_id']})">Excluir</button>
+						<button class="positive" style="margin-left: 1%" onclick="editClient(${client['client_id']})">Editar</button>
 						<hr style="margin-left: 10%; margin-right: 10%">`;
 
 			document.getElementById('container_clients').innerHTML += html;
@@ -76,6 +75,10 @@ include('verify_login.php');
 			}
 		}
 		xhttp.send();	
+	}
+
+	function editClient(client_id) {
+		window.location.href = `../view/new_user.php?${client_id}`;
 	}
 
 	function showMessage(message) {
