@@ -11,11 +11,11 @@ include('verify_login.php');
 	</div>
 
 	<div class="container" id="container_clients">
-		<span class="title" style="margin-left: 10%; font-size: 18px">Nome</span>
-		<span class="title" style="margin-left: 11%; font-size: 18px">Telefone</span>
-		<span class="title" style="margin-left: 7%; font-size: 18px">Nascimento</span>
-		<span class="title" style="margin-left: 8%; font-size: 18px">CPF</span>
-		<span class="title" style="margin-left: 8%; font-size: 18px">RG</span>
+		<span class="title" style="margin-left: 10%; font-size: 18px; width: 4%">Nome</span>
+		<span class="title" style="margin-left: 11%; font-size: 18px; width: 6%">Telefone</span>
+		<span class="title" style="margin-left: 7%; font-size: 18px; width: 7%">Nascimento</span>
+		<span class="title" style="margin-left: 8%; font-size: 18px; width: 3%">CPF</span>
+		<span class="title" style="margin-left: 8%; font-size: 18px; width: 2%">RG</span>
 		<a href="new_user.php" style="margin-left: 10%">
 			<button class="new" >Novo</button>
 		</a>
@@ -47,12 +47,12 @@ include('verify_login.php');
 
 	function buildTable( clients ){
 		for (let client of clients){
-			const html = `<span class="description"style="margin-left: 10%; width: 10%"> ${client['client_name']}</span>
-						<span class="description" style="margin-left: 4%; width: 10%"> ${client['client_phone']} </span>
-						<span class="description"style="margin-left: 8%; width: 10%"> ${client['client_date_of_birth']} </span>
-						<span class="description"style="margin-left: 8%; width: 10%"> ${client['client_cpf']} </span>
-						<span class="description"style="margin-left: 6%; width: 10%"> ${client['client_rg']} </span>
-						<button class="danger" style="margin-left: 8%" onclick="deleteClient(${client['client_id']})">Excluir</button>
+			const html = `<span class="description"style="margin-left: 10%; width: 12%"> ${client['client_name']}</span>
+						<span class="description" style="margin-left: 4%; width: 5%"> ${client['client_phone']} </span>
+						<span class="description"style="margin-left: 8%; width: 6%"> ${client['client_date_of_birth']} </span>
+						<span class="description"style="margin-left: 8%; width: 5%"> ${client['client_cpf']} </span>
+						<span class="description"style="margin-left: 6%; width: 4%"> ${client['client_rg']} </span>
+						<button class="danger" style="margin-left: 8%;" onclick="deleteClient(${client['client_id']})">Excluir</button>
 						<button class="positive" style="margin-left: 1%" onclick="editClient(${client['client_id']})">Editar</button>
 						<hr style="margin-left: 10%; margin-right: 10%; opacity: 0.5">`;
 
@@ -88,6 +88,10 @@ include('verify_login.php');
 </script>
 
 <style>
+	span {
+		display: inline-block;
+	}
+
 	.container {
 		padding: 5%;
 		background-color: #fff;
